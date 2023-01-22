@@ -1,0 +1,37 @@
+#writer {
+    clear: both;
+    float: left;
+    width: 10%;
+}
+
+#content {
+    float: right;
+    width: 90%;
+}
+
+#date {
+    font-size: 12px;
+    float: left;
+}
+
+#delete {
+    float: right;
+}
+
+#thumbsup {
+    text-align: center;
+    font-weight: bold;
+    width: 65px;
+    float: right;
+}
+
+#thumbsdown {
+    text-align: center;
+    font-weight: bold;
+    width: 65px;
+    float: right;
+}
+
+#line {
+    clear: both;
+}
