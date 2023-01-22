@@ -19,7 +19,10 @@ namespace Guestbook_aspnet.Pages.Boards
             _context = context;
         }
 
-        public IList<Board> Board { get;set; } = default!;
+        public IList<Board> Board { get; set; } = default!;
+
+        [BindProperty]
+        public Board NewBoard { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
@@ -27,6 +30,22 @@ namespace Guestbook_aspnet.Pages.Boards
             {
                 Board = await _context.Board.ToListAsync();
             }
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid || _context.Board == null || NewBoard == null)
+            {
+                return RedirectToPage("./Index");
+            }
+
+            NewBoard.Date = DateTime.Now;
+            NewBoard.ThumbsUp = 0;
+            NewBoard.ThumbsDown = 0;
+
+            _context.Board.Add(NewBoard);
+            await _context.SaveChangesAsync();
+            return RedirectToPage("./Index");
         }
     }
 }
