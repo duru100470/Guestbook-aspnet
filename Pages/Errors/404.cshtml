@@ -1,0 +1,13 @@
+﻿@page
+@model Guestbook_aspnet.Pages.Errors._404Model
+@{
+    ViewData["title"] = "Page does not exists";
+}
+
+<div class="container" style="text-align: center;  color: #888;">
+    <h1 style="font-size: 150px; color: #888; margin-bottom: 0px;">404</h1>
+    <p style="font-size: 50px; ">Page not found</p>
+    <img style="width: 120px; opacity: 0.6;" src="~/images/dedenne.jpg" />
+    <p>The page you are looking for doesn't exists or another issue occurred.</p>
+    <a asp-area="" asp-page="/Index">Back to main</a>
+</div>
