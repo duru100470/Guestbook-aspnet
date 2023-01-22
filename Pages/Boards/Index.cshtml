@@ -1,0 +1,66 @@
+@page
+@model Guestbook_aspnet.Pages.Boards.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Board[0].Writer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Board[0].Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Board[0].Contents)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Board[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Board[0].ThumbsUp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Board[0].ThumbsDown)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Board) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Writer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contents)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThumbsUp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThumbsDown)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

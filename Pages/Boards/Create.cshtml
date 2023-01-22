@@ -1,0 +1,59 @@
+@page
+@model Guestbook_aspnet.Pages.Boards.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Board</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Board.Writer" class="control-label"></label>
+                <input asp-for="Board.Writer" class="form-control" />
+                <span asp-validation-for="Board.Writer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Board.Password" class="control-label"></label>
+                <input asp-for="Board.Password" class="form-control" />
+                <span asp-validation-for="Board.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Board.Contents" class="control-label"></label>
+                <input asp-for="Board.Contents" class="form-control" />
+                <span asp-validation-for="Board.Contents" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Board.Date" class="control-label"></label>
+                <input asp-for="Board.Date" class="form-control" />
+                <span asp-validation-for="Board.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Board.ThumbsUp" class="control-label"></label>
+                <input asp-for="Board.ThumbsUp" class="form-control" />
+                <span asp-validation-for="Board.ThumbsUp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Board.ThumbsDown" class="control-label"></label>
+                <input asp-for="Board.ThumbsDown" class="form-control" />
+                <span asp-validation-for="Board.ThumbsDown" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

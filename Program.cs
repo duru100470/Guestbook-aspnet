@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Ducinside.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<BoardContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("BoardContext") ?? throw new InvalidOperationException("Connection string 'BoardContext' not found.")));
 
 var app = builder.Build();
 
