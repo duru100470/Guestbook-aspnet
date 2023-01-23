@@ -42,14 +42,14 @@
         <div id="date">
             @Html.DisplayFor(modelItem => item.Date)
         </div>
-        <div id="thumbsdown">
-            <input type="button" value="Bad" style="width: 60px;align-items:center;" />
+        <form id="thumbsdown" asp-page="./Thumbsdown" asp-route-id="@item.Id" method="post">
+            <input type="submit" value="Bad" style="width: 60px;align-items:center;" />
             @Html.DisplayFor(modelItem => item.ThumbsDown)
-        </div>
-        <div id="thumbsup">
-            <input type="button" value="Good" style="width: 60px;align-items:center;" />
+        </form>
+        <form id="thumbsup" asp-page="./Thumbsup" asp-route-id="@item.Id" method="post">
+            <input type="submit" value="Good" style="width: 60px;align-items:center;" />
             @Html.DisplayFor(modelItem => item.ThumbsUp)
-        </div>
+        </form>
         <a id="delete" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
     </div>
 }
