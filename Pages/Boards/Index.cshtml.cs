@@ -28,7 +28,7 @@ namespace Guestbook_aspnet.Pages.Boards
         {
             if (_context.Board != null)
             {
-                Board = await _context.Board.ToListAsync();
+                Board = await _context.Board.OrderByDescending(e => e.Date).ToListAsync();
             }
         }
 

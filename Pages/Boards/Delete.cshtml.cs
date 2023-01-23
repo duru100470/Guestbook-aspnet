@@ -20,7 +20,9 @@ namespace Guestbook_aspnet.Pages.Boards
         }
 
         [BindProperty]
-      public Board Board { get; set; } = default!;
+        public Board Board { get; set; } = default!;
+        [BindProperty]
+        public string Password { get; set; } = "";
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -35,7 +37,7 @@ namespace Guestbook_aspnet.Pages.Boards
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Board = board;
             }
@@ -52,6 +54,12 @@ namespace Guestbook_aspnet.Pages.Boards
 
             if (board != null)
             {
+                if (board.Password != Password)
+                {
+                    Console.WriteLine("Password was wrong");
+                    return RedirectToPage("./Index");
+                }
+
                 Board = board;
                 _context.Board.Remove(Board);
                 await _context.SaveChangesAsync();

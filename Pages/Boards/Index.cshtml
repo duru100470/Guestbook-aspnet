@@ -23,7 +23,7 @@
                 <input asp-for="NewBoard.Writer" type="text" placeholder="Your name" />
                 <input asp-for="NewBoard.Password" type="password" placeholder="Password"/>
                 <input type="submit" value="Upload" />
-                <input type="button" value="Cancle" />
+                <input type="button" value="Cancel" />
             </div>
         </div>
     </form>
@@ -50,12 +50,7 @@
             <input type="button" value="Good" style="width: 60px;align-items:center;" />
             @Html.DisplayFor(modelItem => item.ThumbsUp)
         </div>
-        <form id="delete" >
-            <p>
-                Password: <input type="password" />
-                <input type="submit" value="Delete" />
-            </p>
-        </form>
+        <a id="delete" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
     </div>
 }
 
