@@ -1,0 +1,123 @@
+@page
+@model Guestbook_aspnet.Pages.Boards.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Boards/Index.css" asp-append-version=true>
+</head>
+
+<h1>Boards</h1>
+<label asp-for="NewBoard.Writer" class="control-label"></label>
+
+<div class="container">
+    <form method="post">
+        <div class="comtitle">
+            <h3>Context</h3>
+        </div>
+
+        <div class="cominput">
+            <textarea asp-for="NewBoard.Contents" class="commentbox" placeholder="Write something.. :)" style="width: 100%;"></textarea>
+            <div class="com_btn">
+                <input asp-for="NewBoard.Writer" type="text" placeholder="Your name" />
+                <input asp-for="NewBoard.Password" type="password" placeholder="Password"/>
+                <input type="submit" value="Upload" />
+                <input type="button" value="Cancel" />
+            </div>
+        </div>
+    </form>
+</div>
+
+@foreach (var item in Model.Board)
+{
+    <hr id="line" width=”100%” noshade />
+    <div class="container">
+        <div id="writer">
+            @Html.DisplayFor(modelItem => item.Writer)
+        </div>
+        <div id="content">
+            @Html.DisplayFor(modelItem => item.Contents)
+        </div>
+        <div id="date">
+            @Html.DisplayFor(modelItem => item.Date)
+        </div>
+        <form id="thumbsdown" asp-page="./Thumbsdown" asp-route-id="@item.Id" method="post">
+            <input type="submit" value="Bad" style="width: 60px;align-items:center;" />
+            @Html.DisplayFor(modelItem => item.ThumbsDown)
+        </form>
+        <form id="thumbsup" asp-page="./Thumbsup" asp-route-id="@item.Id" method="post">
+            <input type="submit" value="Good" style="width: 60px;align-items:center;" />
+            @Html.DisplayFor(modelItem => item.ThumbsUp)
+        </form>
+        <a id="delete" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+    </div>
+}
+
+<hr id="line" width=”100%” noshade />
+
+<form>
+    <p>
+        Writer: <input type="text" />
+        Content: <input type="text" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<!--
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+@Html.DisplayNameFor(model => model.Board[0].Writer)
+            </th>
+            <th>
+@Html.DisplayNameFor(model => model.Board[0].Password)
+            </th>
+            <th>
+@Html.DisplayNameFor(model => model.Board[0].Contents)
+            </th>
+            <th>
+@Html.DisplayNameFor(model => model.Board[0].Date)
+            </th>
+            <th>
+@Html.DisplayNameFor(model => model.Board[0].ThumbsUp)
+            </th>
+            <th>
+@Html.DisplayNameFor(model => model.Board[0].ThumbsDown)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Board)
+{
+            <tr>
+                <td>
+            @Html.DisplayFor(modelItem => item.Writer)
+                </td>
+                <td>
+            @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+            @Html.DisplayFor(modelItem => item.Contents)
+                </td>
+                <td>
+            @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+            @Html.DisplayFor(modelItem => item.ThumbsUp)
+                </td>
+                <td>
+            @Html.DisplayFor(modelItem => item.ThumbsDown)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+}
+    </tbody>
+</table>
+-->
